@@ -1,27 +1,28 @@
-const express = require('express')
-const cors = require('cors');
-const  {conn}  = require('./db/db');
-const app = express()
-const ExpenseSchema=require('./model/ExpenseModel')
-const IncomeSchema=require('./model/incomeModel')
+const express = require("express");
+const cors = require("cors");
+const { conn } = require("./db/db");
+const { readdirSync } = require("fs");
 
-require('dotenv').config()
+const Expense = require("./model/expenseModel");
+const Income = require("./model/incomeModel");
 
-const PORT = process.env.PORT||3000
+require("dotenv").config();
 
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json())
-app.use(cors())
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-app.get('/',(req,res)=>{
-    res.send('hii')
-})
+//routes
+readdirSync("./routes").map((route) =>
+  app.use("/home", require("./routes/" + route))
+);
 
 const server = () => {
-    
-    app.listen(PORT, () => {
-        console.log('listening to port:', PORT)
-    })
-}
+  app.listen(PORT, () => {
+    console.log("listening to port:", PORT);
+  });
+};
 
-server()
+server();

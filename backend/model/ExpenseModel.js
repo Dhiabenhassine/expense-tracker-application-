@@ -1,24 +1,24 @@
-const {conn} = require('../db/db');
+const { conn } = require('../db/db');
 
 const ExpenseSchema = new conn.Schema({
-    title: {
-        type: String,
-    },
-    amount: {
-        type: Number,
-    },
-    type: {
-        type: String,
-    },
-    date: {
-        type: Date,
-    },
-    category: {
-        type: String,
-    },
-    description: {
-        type: String,
-    },
-})
-conn.model('expense',ExpenseSchema)
-module.exports = ExpenseSchema
+  title: {
+    type: String,
+  },
+  amount: {
+    type: Number,
+  },
+  category: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+const ExpenseModel = conn.model('Expense', ExpenseSchema);
+
+module.exports = ExpenseModel;
