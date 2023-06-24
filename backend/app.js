@@ -1,7 +1,9 @@
 const express = require('express')
 const cors = require('cors');
-const  {db}  = require('./db/db');
+const  {conn}  = require('./db/db');
 const app = express()
+const ExpenseSchema=require('./model/ExpenseModel')
+const IncomeSchema=require('./model/incomeModel')
 
 require('dotenv').config()
 
@@ -16,7 +18,7 @@ app.get('/',(req,res)=>{
 })
 
 const server = () => {
-    db()
+    
     app.listen(PORT, () => {
         console.log('listening to port:', PORT)
     })
