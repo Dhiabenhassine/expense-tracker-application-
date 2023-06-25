@@ -1,4 +1,4 @@
-const { conn } = require('../db/db');
+const { conn } = require("../db/db");
 
 const IncomeSchema = new conn.Schema({
   title: {
@@ -8,7 +8,7 @@ const IncomeSchema = new conn.Schema({
     type: Number,
   },
   date: {
-    type: Date,
+    type: String,
   },
   category: {
     type: String,
@@ -18,6 +18,6 @@ const IncomeSchema = new conn.Schema({
   },
 });
 
-const IncomeModel = conn.model('income', IncomeSchema);
+const IncomeModel = conn.model("income", IncomeSchema);
 
 module.exports = IncomeModel;

@@ -46,3 +46,15 @@ module.exports.deleteExpense = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+
+module.exports.updateExpense = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await ExpenseModel.updateOne({ _id: id });
+    res.status(200).json({ message: "Expense updated" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: "Server Error" });
+  }
+};

@@ -1,4 +1,4 @@
-const IncomeModel = require('../model/incomeModel');
+const IncomeModel = require("../model/incomeModel");
 
 module.exports.addIncome = async (req, res) => {
   const { title, amount, category, description, date } = req.body;
@@ -14,16 +14,17 @@ module.exports.addIncome = async (req, res) => {
   try {
     // Validations
     if (!title || !category || !description || !date) {
-      return res.status(400).json('Please fill in the form');
+      return res.status(400).json("Please fill in the form");
     }
     if (amount <= 0) {
-      return res.status(400).json('Amount must be a positive number!');
+      return res.status(400).json("Amount must be a positive number!");
     }
 
     await income.save();
-    res.status(200).json('Income Added');
+    res.status(200).json("Income Added");
   } catch (error) {
-    res.status(500).json('Server Error');
+    console.log(error.message);
+    res.status(500).json("Server Error");
   }
 
   console.log(income);
@@ -34,7 +35,7 @@ module.exports.getIncome = async (req, res) => {
     const incomes = await IncomeModel.find();
     res.status(200).json(incomes);
   } catch (error) {
-    res.status(500).json('Server Error');
+    res.status(500).json("Server Error");
   }
 };
 
@@ -43,8 +44,19 @@ module.exports.deleteIncome = async (req, res) => {
 
   try {
     await IncomeModel.deleteOne({ _id: id });
-    res.status(200).json({ message: 'Income Deleted' });
+    res.status(200).json({ message: "Income Deleted" });
   } catch (error) {
-    res.status(500).json({ message: 'Server Error' });
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+module.exports.updateIncome = async (req, res) => {
+  const { title, amount, category, description, date } = req.body;
+
+  try {
+    await IncomeModel.updateOne(req.body);
+    res.status(200).json({ message: "Income updated" });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error" });
   }
 };

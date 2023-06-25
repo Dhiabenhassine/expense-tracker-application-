@@ -4,7 +4,7 @@ let conn = mongoose;
 const db = () => {
   try {
     mongoose.set("strictQuery", false);
-    mongoose.connect(`mongodb://127.0.0.1/rout`).then(() => {
+    mongoose.connect(`mongodb://127.0.0.1/home`).then(() => {
       console.log("Db Connected");
     });
   } catch (error) {
