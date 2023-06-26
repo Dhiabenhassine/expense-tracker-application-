@@ -106,7 +106,7 @@ export const Income = () => {
             onChange={handleInputChange}
           />
           <input
-            type="email"
+            type="number"
             name="amount"
             value={income.amount}
             onChange={handleInputChange}
@@ -163,24 +163,28 @@ export const Income = () => {
             onChange={handleInputChange}
           />
           <input
+            placeholder="Amount"
             type="number"
             name="amount"
             value={income.amount}
             onChange={handleInputChange}
           />
           <input
+            placeholder="Date"
             type="text"
             name="date"
             value={income.date}
             onChange={handleInputChange}
           />
           <input
+            placeholder="Category"
             type="text"
             name="category"
             value={income.category}
             onChange={handleInputChange}
           />
           <input
+            placeholder="Description"
             type="text"
             name="description"
             value={income.description}

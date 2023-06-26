@@ -108,7 +108,7 @@ export const Expenses = () => {
             onChange={handleInputChange}
           />
           <input
-            type="email"
+            type="number"
             name="amount"
             value={expense.amount}
             onChange={handleInputChange}
@@ -140,6 +140,7 @@ export const Expenses = () => {
                 "http://127.0.0.1:8080/home/updateExpense",
                 expense
               );
+              console.log("aaaaaa");
               setOpen(false);
             }}
           >
@@ -165,24 +166,28 @@ export const Expenses = () => {
             onChange={handleInputChange}
           />
           <input
+            placeholder="Amount"
             type="number"
             name="amount"
             value={expense.amount}
             onChange={handleInputChange}
           />
           <input
+            placeholder="Date"
             type="text"
             name="date"
             value={expense.date}
             onChange={handleInputChange}
           />
           <input
+            placeholder="Category"
             type="text"
             name="category"
             value={expense.category}
             onChange={handleInputChange}
           />
           <input
+            placeholder="Description"
             type="text"
             name="description"
             value={expense.description}

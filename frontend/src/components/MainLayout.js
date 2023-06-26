@@ -94,7 +94,7 @@ export default function MainLayout(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            BHS BANK
+            DHIA BANK
           </Typography>
         </Toolbar>
       </AppBar>

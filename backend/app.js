@@ -11,8 +11,8 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8080;
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 //routes
 readdirSync("./routes").map((route) =>
